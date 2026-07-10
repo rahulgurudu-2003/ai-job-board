@@ -1,75 +1,112 @@
-# React + TypeScript + Vite
+# 💼 Next-Gen AI Job Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![CI/CD Pipeline](https://github.com/rahulgurudu-2003/ai-job-board/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/rahulgurudu-2003/ai-job-board/actions/workflows/ci-cd.yml)
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://ai-job-board-taupe.vercel.app/)
+[![Backend Host](https://img.shields.io/badge/Backend%20on-Render-indigo?logo=render)](https://ai-job-board-backend-zmpj.onrender.com/)
 
-Currently, two official plugins are available:
+A modern, highly polished, full-stack Job Board platform designed to streamline hiring. Featuring user authentication, advanced multi-category job searches, saved jobs, live application tracking, and an **AI-driven ATS Resume Scorer**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Live Frontend URL:** [https://ai-job-board-taupe.vercel.app/](https://ai-job-board-taupe.vercel.app/)
+* **Live API Server:** [https://ai-job-board-backend-zmpj.onrender.com/](https://ai-job-board-backend-zmpj.onrender.com/)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Architecture & Technology Stack
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This application is built with a decoupled monorepo architecture, prioritizing separation of concerns, scalability, type safety, and clean code.
 
 ```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+ai-job-board/
+├── backend/            # Django REST API (Gunicorn, DRF, SQLite/Postgres)
+├── src/                # React (TypeScript, Redux Toolkit, Tailwind CSS)
+└── .github/            # GitHub Actions CI/CD workflows
 ```
+
+### Frontend Technology Selection
+* **React 19 & TypeScript:** Provides robust compiler safety and strict typing across core interfaces.
+* **Redux Toolkit:** Centralized state management for global configurations, user authentication session states, and dashboard updates.
+* **React Router v7:** Clean client-side routing, protected auth routes, and route-level state handling.
+* **Tailwind CSS:** Modern utility-first design system customized with CSS variables for responsive theme management.
+* **Sonner & Lucide React:** High-fidelity UI icons and sleek toast notification queues.
+
+### Backend Technology Selection
+* **Django 5.x & Django REST Framework (DRF):** Robust API engine supplying rapid development, security defaults, and integrated user model structure.
+* **Simple JWT (JSON Web Tokens):** Standardized secure authentication, complete with sliding session refresh mechanisms.
+* **Pillow & Media Storage:** Handles secure, isolated file uploads for user avatars and PDF resumes.
+
+---
+
+## 🌟 Key Features
+
+### 🔒 1. JWT-secured Authentication & Profiles
+* Complete user registration with real-time profile picture and PDF resume file uploads.
+* Safe user sign-in utilizing short-lived access tokens and long-lived refresh tokens stored securely on the client.
+* Profile settings dashboard supporting real-time image file updates, resume replacements, and GitHub profile integration.
+
+### 🔍 2. Job Search Dashboard & Filters
+* Instant job search with debounce-driven querying.
+* Interactive filters allowing users to narrow down jobs by **Job Type** (Full-time, Part-time, Remote, Contract, Internship) and **Experience Level** (Entry, Mid, Senior, Executive).
+
+### 🤖 3. ATS Resume Optimizer
+* Interactive resume parser that extracts technical skills and scores your alignment (out of 100) against modern tech roles.
+* Scans for missing key-terms, listing recommended keywords (e.g. AWS, CI/CD, Docker) to optimize resume search-ranking.
+* Supplies an automated AI Checklist suggesting improvements to resume formatting, language, and styling.
+
+### 📁 4. Application Tracking & Saved Jobs
+* One-click applications that automatically attach the candidate's active resume.
+* Live status board (`Applied`, `Interviewing`, `Accepted`, `Rejected`) indicating submission date and recruitment progress.
+* Bookmarking functionality to save promising jobs in a personalized dashboard for later review.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+* **Node.js:** v18.x or higher
+* **Python:** v3.11 or higher
+
+### Local Frontend Setup
+1. From the project root, install all node dependencies:
+   ```bash
+   npm install
+   ```
+2. Spin up the Vite development server:
+   ```bash
+   npm run dev
+   ```
+3. The frontend is accessible at `http://localhost:5173`.
+
+### Local Backend Setup
+1. Navigate into the `backend/` directory:
+   ```bash
+   cd backend
+   ```
+2. Establish and activate a Python virtual environment:
+   ```bash
+   python -m venv venv
+   # On Windows:
+   .\venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   ```
+3. Install required backend libraries:
+   ```bash
+   pip install django djangorestframework djangorestframework-simplejwt django-cors-headers Pillow gunicorn
+   ```
+4. Run migrations to initialize the local SQLite database:
+   ```bash
+   python manage.py migrate
+   ```
+5. Run the server:
+   ```bash
+   python manage.py runserver
+   ```
+6. The API is hosted locally at `http://127.0.0.1:8000/api/`.
+
+---
+
+## 🚀 CI/CD Pipeline
+
+We implemented a full-scale **CI/CD Pipeline** using GitHub Actions:
+* **CI (Continuous Integration):** Triggered on every pull request and push to the `main` branch. Validates code compilation, checks type safety, and verifies Vite build bundles.
+* **CD (Continuous Deployment):** On successful CI passing, triggers a secure automated deploy directly to **Vercel** utilizing repository environment keys.
