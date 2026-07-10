@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    --primary: #2563EB;
+    --background: #FFFFFF;
+    --card: #FFFFFF;
+    --text: #0F172A;
+    --secondary: #64748B;
+    --border: #E2E8F0;
+}
+
+.dark {
+    --background: #0F172A;
+    --card: #1E293B;
+    --text: #F8FAFC;
+    --secondary: #94A3B8;
+    --border: #334155;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--background);
+        color: var(--text);
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin-inline: auto;
+}
+
+
+div[data-sonner-toaster] [data-sonner-toast] {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+    border: 1px solid #1d4ed8 !important;
+    border-radius: 14px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.2), 0 8px 10px -6px rgba(37, 99, 235, 0.2) !important;
+    padding: 12px 16px !important;
+}
+
+div[data-sonner-toaster] [data-sonner-toast] [data-icon] {
+    color: #ffffff !important;
+}
+
+div[data-sonner-toaster] [data-sonner-toast] [data-icon] svg {
+    stroke: #ffffff !important;
+    fill: none !important;
+}
+
+div[data-sonner-toaster] [data-sonner-toast] button[data-close-button] {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
