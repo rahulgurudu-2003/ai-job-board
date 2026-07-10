@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://127.0.0.1:8000/api/auth/";
+const API_URL = "https://ai-job-board-backend-zmpj.onrender.com/api/auth/";
 
 let authErrorCallback: (() => void) | null = null;
 
@@ -9,7 +9,7 @@ export const setAuthErrorCallback = (cb: () => void) => {
 };
 
 export const api = axios.create({
-    baseURL: "http://127.0.0.1:8000",
+    baseURL: "https://ai-job-board-backend-zmpj.onrender.com",
     headers: {
         "Content-Type": "application/json",
     },

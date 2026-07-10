@@ -12,6 +12,6 @@ export const getAvatarUrl = (avatar: string | null | undefined): string | null =
     }
 
     const cleanPath = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
-    return `http://127.0.0.1:8000${cleanPath}`;
+    return `https://ai-job-board-backend-zmpj.onrender.com${cleanPath}`;
 };
 

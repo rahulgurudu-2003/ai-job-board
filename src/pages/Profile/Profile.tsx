@@ -29,7 +29,7 @@ const getResumeUrl = (resumePath: string | null | undefined): string | null => {
         return resumePath;
     }
     const cleanPath = resumePath.startsWith("/") ? resumePath : `/${resumePath}`;
-    return `http://127.0.0.1:8000${cleanPath}`;
+    return `https://ai-job-board-backend-zmpj.onrender.com${cleanPath}`;
 };
 
 
