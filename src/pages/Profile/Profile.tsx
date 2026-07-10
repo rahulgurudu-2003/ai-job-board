@@ -32,6 +32,7 @@ const getResumeUrl = (resumePath: string | null | undefined): string | null => {
     return `http://127.0.0.1:8000${cleanPath}`;
 };
 
+
 const getResumeFileName = (resumePath: string | null | undefined): string => {
     if (!resumePath) return "";
     const parts = resumePath.split("/");
